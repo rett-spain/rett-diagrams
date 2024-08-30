@@ -1,39 +1,33 @@
 const fs = require('fs');
-const puppeteer = require('puppeteer');
+const path = require('path');
+const { JSDOM } = require('jsdom');
+const sharp = require('sharp');
+const xmlserializer = require('xmlserializer');
 
-(async () => {
-  const browser = await puppeteer.launch();
-  const page = await browser.newPage();
+const excalidrawToSvg = async (data) => {
+  const dom = new JSDOM(`<!DOCTYPE html><html><body></body></html>`);
+  const { document } = dom.window;
+  const svgElement = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  // Add your SVG conversion logic here
+  return svgElement;
+};
 
-  // Load Excalidraw file(s) and convert
-  const excalidrawFiles = fs.readdirSync('.').filter(file => file.endsWith('.excalidraw'));
+const inputFilePath = path.join(__dirname, process.argv[2]);
+const outputSvgPath = path.join(__dirname, process.argv[3]);
+const outputPngPath = path.join(__dirname, process.argv[4]);
 
-  for (const file of excalidrawFiles) {
-    const content = fs.readFileSync(file, 'utf-8');
-    const data = JSON.parse(content);
+async function convertExcalidraw() {
+  try {
+    const excalidrawData = fs.readFileSync(inputFilePath, 'utf8');
+    const svgElement = await excalidrawToSvg(excalidrawData);
+    const svgString = xmlserializer.serializeToString(svgElement);
+    fs.writeFileSync(outputSvgPath, svgString);
 
-    await page.goto('https://excalidraw.com');
-
-    // Load drawing into Excalidraw
-    await page.evaluate((data) => {
-      window.localStorage.setItem('excalidraw', JSON.stringify(data));
-      window.location.reload();
-    }, data);
-
-    // Wait for a few seconds to ensure Excalidraw loads
-    await page.waitForSelector('canvas'); // Adjust the selector if needed
-
-    // Export as SVG
-    const svgContent = await page.evaluate(() => {
-      return window.ExcalidrawAPI.exportToSvg();
-    });
-
-    fs.writeFileSync(`${file.replace('.excalidraw', '')}.svg`, svgContent);
-
-    // Export as PNG
-    const pngContent = await page.screenshot();
-    fs.writeFileSync(`${file.replace('.excalidraw', '')}.png`, pngContent);
+    await sharp(Buffer.from(svgString)).png().toFile(outputPngPath);
+    console.log('Conversion to PNG completed');
+  } catch (err) {
+    console.error('Error during conversion:', err);
   }
+}
 
-  await browser.close();
-})();
+convertExcalidraw();

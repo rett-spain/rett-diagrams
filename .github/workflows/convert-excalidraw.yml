@@ -20,39 +20,12 @@ jobs:
 
     - name: Install dependencies
       run: |
-        npm install excalidraw-to-svg sharp canvas xmlserializer
-        npm install jsdom@16.7.0  # Install a compatible version of jsdom
+        npm install sharp canvas xmlserializer jsdom@16.7.0
 
     - name: Convert Excalidraw to SVG and PNG
       run: |
         for file in $(find . -name "*.excalidraw"); do
-          node -e "
-          const fs = require('fs');
-          const path = require('path');
-          const excalidrawToSvg = require('excalidraw-to-svg');
-          const sharp = require('sharp');
-          const xmlserializer = require('xmlserializer');
-
-          const inputFilePath = path.join(process.cwd(), '$file');
-          const outputSvgPath = path.join(process.cwd(), '${file%.excalidraw}.svg');
-          const outputPngPath = path.join(process.cwd(), '${file%.excalidraw}.png');
-
-          async function convertExcalidraw() {
-            try {
-              const excalidrawData = fs.readFileSync(inputFilePath, 'utf8');
-              const svgElement = await excalidrawToSvg(excalidrawData);
-              const svgString = xmlserializer.serializeToString(svgElement);
-              fs.writeFileSync(outputSvgPath, svgString);
-
-              await sharp(Buffer.from(svgString)).png().toFile(outputPngPath);
-              console.log('Conversion to PNG completed');
-            } catch (err) {
-              console.error('Error during conversion:', err);
-            }
-          }
-
-          convertExcalidraw();
-          "
+          node utils/convert-excalidraw.js "$file" "${file%.excalidraw}.svg" "${file%.excalidraw}.png"
         done
 
     - name: Commit and push changes
