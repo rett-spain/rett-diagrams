@@ -32,6 +32,7 @@ jobs:
         done
 
     - name: Commit and push changes
+      if: success()  # Only run this step if the previous steps were successful
       run: |
         git config --global user.name 'github-actions[bot]'
         git config --global user.email 'github-actions[bot]@users.noreply.github.com'

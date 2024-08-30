@@ -8,6 +8,8 @@ const excalidrawToSvg = async (data) => {
   const dom = new JSDOM(`<!DOCTYPE html><html><body></body></html>`);
   const { document } = dom.window;
   const svgElement = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  svgElement.setAttribute('width', '800');  // Set a default width
+  svgElement.setAttribute('height', '600'); // Set a default height
   // Add your SVG conversion logic here
   return svgElement;
 };
@@ -27,6 +29,7 @@ async function convertExcalidraw() {
     console.log('Conversion to PNG completed');
   } catch (err) {
     console.error('Error during conversion:', err);
+    process.exit(1); // Exit with an error code to indicate failure
   }
 }
 
