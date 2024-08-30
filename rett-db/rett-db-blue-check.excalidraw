@@ -6768,7 +6768,7 @@
     {
       "id": "8TVBJ3bxEZhtKx6y8ywjR",
       "type": "rectangle",
-      "x": 431.1198638063981,
+      "x": 464.3440094549165,
       "y": 2198.231921607932,
       "width": 278.7499982730344,
       "height": 157.93363990351602,
@@ -6786,8 +6786,8 @@
         "type": 3
       },
       "seed": 140954706,
-      "version": 138,
-      "versionNonce": 1568206866,
+      "version": 149,
+      "versionNonce": 1691956306,
       "isDeleted": false,
       "boundElements": [
         {
@@ -6795,14 +6795,14 @@
           "id": "3Ze56DwxBi86r3HQESzzv"
         }
       ],
-      "updated": 1725025534357,
+      "updated": 1725041209383,
       "link": null,
       "locked": false
     },
     {
       "id": "3Ze56DwxBi86r3HQESzzv",
       "type": "text",
-      "x": 448.7949422886184,
+      "x": 482.0190879371368,
       "y": 2214.69874155969,
       "width": 243.39984130859375,
       "height": 125,
@@ -6818,11 +6818,11 @@
       "frameId": null,
       "roundness": null,
       "seed": 796416462,
-      "version": 410,
-      "versionNonce": 1690639826,
+      "version": 421,
+      "versionNonce": 1477630482,
       "isDeleted": false,
       "boundElements": null,
-      "updated": 1725025534357,
+      "updated": 1725041209383,
       "link": null,
       "locked": false,
       "text": "Para limitar problemas \nrelacionados con GDPR, \nlimitar el tiempo que la \ndocumentación será \nalmacenada",
