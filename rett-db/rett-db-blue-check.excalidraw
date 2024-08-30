@@ -6771,7 +6771,7 @@
       "x": 431.1198638063981,
       "y": 2198.231921607932,
       "width": 278.7499982730344,
-      "height": 175.5839524269268,
+      "height": 161.0484065285373,
       "angle": 0,
       "strokeColor": "#2f9e44",
       "backgroundColor": "#b2f2bb",
@@ -6786,8 +6786,8 @@
         "type": 3
       },
       "seed": 140954706,
-      "version": 130,
-      "versionNonce": 446295634,
+      "version": 136,
+      "versionNonce": 1550256402,
       "isDeleted": false,
       "boundElements": [
         {
@@ -6795,7 +6795,7 @@
           "id": "3Ze56DwxBi86r3HQESzzv"
         }
       ],
-      "updated": 1725024326617,
+      "updated": 1725025533686,
       "link": null,
       "locked": false
     },
@@ -6803,7 +6803,7 @@
       "id": "3Ze56DwxBi86r3HQESzzv",
       "type": "text",
       "x": 448.7949422886184,
-      "y": 2223.523897821395,
+      "y": 2216.2561248722004,
       "width": 243.39984130859375,
       "height": 125,
       "angle": 0,
@@ -6818,11 +6818,11 @@
       "frameId": null,
       "roundness": null,
       "seed": 796416462,
-      "version": 402,
-      "versionNonce": 1236030482,
+      "version": 408,
+      "versionNonce": 1887966930,
       "isDeleted": false,
       "boundElements": null,
-      "updated": 1725024326617,
+      "updated": 1725025533686,
       "link": null,
       "locked": false,
       "text": "Para limitar problemas \nrelacionados con GDPR, \nlimitar el tiempo que la \ndocumentación será \nalmacenada",
