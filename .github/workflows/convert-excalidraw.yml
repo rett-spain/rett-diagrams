@@ -10,28 +10,28 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: '14'
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
 
-    - name: Install dependencies
-      run: npm install -g excalidraw-to-svg
+      - name: Install dependencies
+        run: npm install -g @excalidraw/excalidraw-cli
 
-    - name: Convert Excalidraw to SVG and PNG
-      run: |
-        for file in $(find . -name "*.excalidraw"); do
-          npx excalidraw-to-svg "$file" "${file%.excalidraw}.svg"
-          npx excalidraw-to-svg "$file" "${file%.excalidraw}.png"
-        done
+      - name: Convert Excalidraw to SVG and PNG
+        run: |
+          for file in $(git diff --name-only HEAD^ HEAD | grep -E '\.excalidraw$'); do
+            excalidraw-cli export --input $file --output ${file%.excalidraw}.svg
+            excalidraw-cli export --input $file --output ${file%.excalidraw}.png --format png
+            git add ${file%.excalidraw}.svg ${file%.excalidraw}.png
+          done
 
-    - name: Commit and push changes
-      run: |
-        git config --global user.name 'github-actions[bot]'
-        git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-        git add .
-        git commit -m 'Convert Excalidraw files to SVG and PNG'
-        git push
+      - name: Commit changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git commit -m "Convert Excalidraw to SVG and PNG [skip ci]" || echo "No changes to commit"
+          git push
