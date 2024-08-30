@@ -18,16 +18,12 @@ jobs:
         with:
           node-version: '16'
 
-      - name: Install dependencies
-        run: npm install -g @excalidraw/excalidraw-cli
+      - name: Install Puppeteer
+        run: npm install puppeteer
 
       - name: Convert Excalidraw to SVG and PNG
         run: |
-          for file in $(git diff --name-only HEAD^ HEAD | grep -E '\.excalidraw$'); do
-            excalidraw-cli export --input $file --output ${file%.excalidraw}.svg
-            excalidraw-cli export --input $file --output ${file%.excalidraw}.png --format png
-            git add ${file%.excalidraw}.svg ${file%.excalidraw}.png
-          done
+          node utils/convert-excalidraw.js
 
       - name: Commit changes
         run: |
