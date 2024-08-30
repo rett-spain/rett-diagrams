@@ -19,7 +19,9 @@ jobs:
         node-version: '14'
 
     - name: Install dependencies
-      run: npm install excalidraw-to-svg sharp canvas xmlserializer
+      run: |
+        npm install excalidraw-to-svg sharp canvas xmlserializer
+        npm install jsdom@16.7.0  # Install a compatible version of jsdom
 
     - name: Convert Excalidraw to SVG and PNG
       run: |
