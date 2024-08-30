@@ -36,6 +36,6 @@ jobs:
       run: |
         git config --global user.name 'github-actions[bot]'
         git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-        git add .
+        git add $(git diff --name-only HEAD~1 HEAD | grep '\.svg$' | grep '\.png$')
         git commit -m 'Convert Excalidraw files to SVG and PNG'
         git push
