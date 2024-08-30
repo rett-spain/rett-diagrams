@@ -24,7 +24,8 @@ jobs:
 
     - name: Convert Excalidraw to SVG and PNG
       run: |
-        for file in $(find . -name "*.excalidraw"); do
+        CHANGED_FILES=$(git diff --name-only HEAD~1 HEAD | grep '\.excalidraw$')
+        for file in $CHANGED_FILES; do
           node utils/convert-excalidraw.js "$file" "${file%.excalidraw}.svg" "${file%.excalidraw}.png"
         done
 

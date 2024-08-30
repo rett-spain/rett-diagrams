@@ -12,9 +12,9 @@ const excalidrawToSvg = async (data) => {
   return svgElement;
 };
 
-const inputFilePath = path.join(__dirname, process.argv[2]);
-const outputSvgPath = path.join(__dirname, process.argv[3]);
-const outputPngPath = path.join(__dirname, process.argv[4]);
+const inputFilePath = path.resolve(process.cwd(), process.argv[2]);
+const outputSvgPath = path.resolve(process.cwd(), process.argv[3]);
+const outputPngPath = path.resolve(process.cwd(), process.argv[4]);
 
 async function convertExcalidraw() {
   try {
