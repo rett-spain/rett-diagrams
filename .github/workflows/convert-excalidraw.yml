@@ -31,9 +31,9 @@ jobs:
           const sharp = require('sharp');
           const xmlserializer = require('xmlserializer');
 
-          const inputFilePath = path.join(__dirname, '$file');
-          const outputSvgPath = path.join(__dirname, '${file%.excalidraw}.svg');
-          const outputPngPath = path.join(__dirname, '${file%.excalidraw}.png');
+          const inputFilePath = path.join(process.cwd(), '$file');
+          const outputSvgPath = path.join(process.cwd(), '${file%.excalidraw}.svg');
+          const outputPngPath = path.join(process.cwd(), '${file%.excalidraw}.png');
 
           async function convertExcalidraw() {
             try {
