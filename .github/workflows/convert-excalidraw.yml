@@ -24,8 +24,8 @@ jobs:
     - name: Convert Excalidraw to SVG and PNG
       run: |
         for file in $(find . -name "*.excalidraw"); do
-          npx excalidraw-to-svg $file ${file%.excalidraw}.svg
-          npx excalidraw-to-svg $file ${file%.excalidraw}.png
+          npx excalidraw-to-svg "$file" "${file%.excalidraw}.svg"
+          npx excalidraw-to-svg "$file" "${file%.excalidraw}.png"
         done
 
     - name: Commit and push changes
