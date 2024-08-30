@@ -20,7 +20,8 @@ const puppeteer = require('puppeteer');
       window.location.reload();
     }, data);
 
-    await page.waitForTimeout(3000); // Wait for Excalidraw to load
+    // Wait for a few seconds to ensure Excalidraw loads
+    await page.waitForSelector('canvas'); // Adjust the selector if needed
 
     // Export as SVG
     const svgContent = await page.evaluate(() => {
