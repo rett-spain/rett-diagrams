@@ -6768,8 +6768,8 @@
     {
       "id": "8TVBJ3bxEZhtKx6y8ywjR",
       "type": "rectangle",
-      "x": 527.6778192923329,
-      "y": 2197.193634381213,
+      "x": 482.5900572923329,
+      "y": 2197.576221381213,
       "width": 278.7499982730344,
       "height": 157.93363990351602,
       "angle": 0,
@@ -6786,8 +6786,8 @@
         "type": 3
       },
       "seed": 140954706,
-      "version": 213,
-      "versionNonce": 1386815762,
+      "version": 239,
+      "versionNonce": 946047442,
       "isDeleted": false,
       "boundElements": [
         {
@@ -6795,15 +6795,15 @@
           "id": "3Ze56DwxBi86r3HQESzzv"
         }
       ],
-      "updated": 1725042608541,
+      "updated": 1725043075271,
       "link": null,
       "locked": false
     },
     {
       "id": "3Ze56DwxBi86r3HQESzzv",
       "type": "text",
-      "x": 545.3528977745532,
-      "y": 2213.6604543329713,
+      "x": 500.26513577455324,
+      "y": 2214.0430413329714,
       "width": 243.39984130859375,
       "height": 125,
       "angle": 0,
@@ -6818,11 +6818,11 @@
       "frameId": null,
       "roundness": null,
       "seed": 796416462,
-      "version": 485,
-      "versionNonce": 113716946,
+      "version": 511,
+      "versionNonce": 1119256466,
       "isDeleted": false,
       "boundElements": null,
-      "updated": 1725042608541,
+      "updated": 1725043075271,
       "link": null,
       "locked": false,
       "text": "Para limitar problemas \nrelacionados con GDPR, \nlimitar el tiempo que la \ndocumentación será \nalmacenada",
